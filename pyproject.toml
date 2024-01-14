@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "sales-forecasting"
+version = "0.1.0"
+description = ""
+authors = ["THAI HA NGUYEN <nguyenha.mse@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sales_forecasting"}]
+
+[tool.poetry.dependencies]
+python = "3.11.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
