@@ -1,0 +1,6 @@
+path:
+  raw_data: "./data/raw-data"
+  preprocess_data: "./data/preprocessed-data"
+
+log:
+  weather_data: "./log/weather.log"

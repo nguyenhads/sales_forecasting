@@ -8,6 +8,14 @@ import pandas as pd
 
 sys.path.append("./")
 from src.utils.data_manager import save_data
+from src.utils.logger import init_logger
+from src.utils.utils import load_config
+
+# Basic settings
+config = load_config('./config/path.yaml')
+LOG_DIR = Path(config["log"]["weather_data"])
+logger = init_logger(LOG_DIR)
+OUTPUT_DIR = Path(config["path"]["preprocess_data"])
 
 
 def generate_weather_data(start_date: str, end_date: str) -> pd.DataFrame:
@@ -78,10 +86,11 @@ def main():
     start_date = "2016-01-01"
     end_date = "2017-12-31"
 
+    logger.info(f"Start generate weather data from {start_date} - {end_date}!")
     df_weather = generate_weather_data(start_date=start_date, end_date=end_date)
-    
-    output_path = Path("./data/preprocessed-data/weather.csv")
+    output_path = Path(f"{OUTPUT_DIR}/weather.csv")
     save_data(df=df_weather, path=output_path)
+    logger.info(f"Save weather data to {output_path}")
 
 
 main()
