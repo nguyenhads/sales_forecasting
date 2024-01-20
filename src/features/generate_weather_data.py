@@ -1,3 +1,4 @@
+import os
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -5,11 +6,26 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-sys.path.append("/Users/thaihanguyen/Desktop/03_work/01_youtube/01_sales_forecasting/sales_forecasting/")
+sys.path.append("./")
 from src.utils.data_manager import save_data
 
 
-def generate_weather_data(start_date, end_date):
+def generate_weather_data(start_date: str, end_date: str) -> pd.DataFrame:
+    """Generate Tokyo Weather Data
+
+    Parameters
+    ----------
+    start_date : str
+        Start date of data
+    end_date : str
+        End date of data
+
+    Returns
+    -------
+    pd.DataFrame
+        Weather Data Frame
+    """
+
     date_format = "%Y-%m-%d"
     start_date = datetime.strptime(start_date, date_format)
     end_date = datetime.strptime(end_date, date_format)
